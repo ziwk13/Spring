@@ -1,0 +1,139 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+          
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.shining</groupId>
+  <artifactId>project</artifactId>
+  <version>1.0.0</version>
+  <packaging>war</packaging>
+  
+  <!-- properties : ${} (프로퍼티 대치 문법)을 이용해 가져다 사용 할 수 있다. -->
+  <properties>
+    <java.version>11</java.version>
+    <spring.version>5.3.39</spring.version>
+    <aspectj.version>1.9.22.1</aspectj.version>
+    <slf4j.version>1.7.36</slf4j.version>
+    <logback.version>1.2.13</logback.version>
+    <junit.version>4.13.2</junit.version>
+  </properties>
+  
+  <!-- dependencies : 디펜선시를 모아둔다. -->
+  <!-- 
+    dependency's scope
+    1. Compile  : 디폴트. 컴파일/테스트/빌드/배포 시 모두 사용 한다.
+    2. Provided : 컴파일/빌드 시에는 사용하고, 배포 시에는 사용 하지 않는다. (코딩 할 땐 사용하고, WAR 파일로 배포 할 땐 톰캣이 제공하는 API를 사용한다.)
+    3. Test     : 테스트 시에만 사용 한다.
+    4. Runtime  : 실행 시에만 사용 한다.
+   -->
+   <!-- 
+    Tomcat 9.0을 이용한 JSP 개발 시 필요한 디펜던시
+    
+    1. Servlet API 4.0.1
+    2. JSP API 2.3.3
+    3. JSTL 1.2
+    -->
+  <dependencies>
+       <!-- Spring Web MVC : Spring MVC Project를 위한 필수 디펜던시 -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    
+        <!-- AOP (Spring AOP with Aspectjweaver) -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>${aspectj.version}</version>
+        <scope>runtime</scope>
+    </dependency>
+    
+        <!-- Servlet API 4.0.1 -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+    </dependency>
+    
+        <!-- JSP API 2.3.3 -->
+    <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>javax.servlet.jsp-api</artifactId>
+        <version>2.3.3</version>
+        <scope>provided</scope>
+    </dependency>
+    
+        <!-- JSTL 1.2 -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
+    
+        <!-- Lombok -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.38</version>
+    </dependency>
+    
+        <!-- Logging (SLF4J with Logback) -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+    </dependency>
+    
+        <!-- Logback -->
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+        <scope>compile</scope>
+    </dependency>
+    
+        <!-- Testing -->
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+    </dependency>
+    
+        <!-- Database (Spring JDBC, MySQL Connector/J, MyBatis, MyBatis Spring) -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    
+        <!-- MySQL Connector/J -->
+    <dependency>
+        <groupId>com.mysql</groupId>
+        <artifactId>mysql-connector-j</artifactId>
+        <version>8.0.33</version>
+    </dependency>
+    
+        <!-- MyBatis -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.5.14</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>2.1.2</version>
+    </dependency>
+    
+  </dependencies>
+</project>
