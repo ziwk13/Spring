@@ -1,4 +1,4 @@
-package org.shining.project;
+package org.shining.ioc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

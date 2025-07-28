@@ -11,11 +11,11 @@
 
   <resources location="/resources" mapping="/resources/**"/>
   
-  <beans:bean class="org.springframwork.web.servlet.view.InternalResourceViewResolver">
+  <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <beans:property name="prefix" value="/WEB-INF/views/"/>
     <beans:property name="suffix" value=".jsp"/>
   </beans:bean>
   
-  <context:component-scan base-package="org.shining.project"/>
+  <context:component-scan base-package="org.shining.ioc"/>
   
 </beans:beans>

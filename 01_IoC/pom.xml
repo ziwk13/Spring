@@ -4,7 +4,7 @@
           
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.shining</groupId>
-  <artifactId>project</artifactId>
+  <artifactId>01_IoC</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
   
@@ -41,10 +41,10 @@
         <version>${spring.version}</version>
     </dependency>
     
-        <!-- Spring Web -->
+        <!-- Spring Context -->
     <dependency>
         <groupId>org.springframework</groupId>
-        <artifactId>spring-web</artifactId>
+        <artifactId>spring-context</artifactId>
         <version>${spring.version}</version>
     </dependency>
     
@@ -186,7 +186,7 @@
       <!-- Template (archetype) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-arcgetype-plugin</artifactId>
+        <artifactId>maven-archetype-plugin</artifactId>
         <version>3.1.2</version>
       </plugin>
     </plugins>
