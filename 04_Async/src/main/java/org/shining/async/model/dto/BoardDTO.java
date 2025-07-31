@@ -1,4 +1,4 @@
-package org.shining.mvc.model.dto;
+package org.shining.async.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
