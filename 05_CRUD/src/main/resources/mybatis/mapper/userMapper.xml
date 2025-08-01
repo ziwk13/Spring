@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.mapper.userMapper">
+
+	<!-- Mapper 작성 규칙 
+		1.쿼리 id는 각 쿼리를 호출할 메소드의 이름과 동일하게 설정하는 것을 권장한다. 
+		2. parameterType : 메소드가 쿼리로 전달하는 데이터의 타입이다. TypeAlias를 사용 할 수 있다. 
+		3. resultType : 쿼리문이 메소드로 반환하는 값의 타입이다. <select> 태그만 작성 한다.
+	 -->
+
+
+	<!-- 조회 (회원 정보) -->
+	<select id="getUser" parameterType="UserDTO" resultType="UserDTO">
+	SELECT uid, email, password, nickname
+		FROM tbl_user
+	  WHERE email = #{email} AND password = #{password}
+	</select>
+</mapper>

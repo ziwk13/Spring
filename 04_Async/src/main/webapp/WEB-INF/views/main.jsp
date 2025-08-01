@@ -12,11 +12,12 @@
 <body>
   <h1>fetch() 함수를 이용한 비동기 요청</h1>
   
-  <button onclick="getJson()">게또제이슨</button>
+  <button onclick="getJson3()">게또제이슨</button>
   <br>
   <div id="get-json" ></div>
   
   <script>
+   /* 1. fetch() 함수와 then() 메소드 */
   	function getJson() {
   	  fetch("${contextPath}/a/list")
   	  .then(response => response.json())
@@ -25,11 +26,40 @@
   	    // document.getElementById("get-gson")/textContent = jsonData)
   	  })
   	}
+   /* 2. fetch() 함수와 async 함수 */
+  	function getJson2() {
+  	  getBoards();
+  	}
+  	async function getBoards() {  // 2. 본문에 await 키워드가 포함되기 위해서는 반드시 함수가 async 함수여야 한다.
+ 	 const response = await fetch("${contextPath}/b/list");  // 1, fetch() 함수의 반환값은 프로미스이므로, await을 추가하여 프로미스에 저장된 값을 꺼낸다.
+ 	 const jsonData = await response.json();
+ 	 console.log(response);
+ 	 console.log(jsonData);
+  	}
+  	/* 3. fetch() 함수와 예외 처리 */
+  	function getJson3() {
+  	  const bid = 1;
+  	  fetch("${cocntextPath}/c/detail?bid=" + bid)
+  	  	.then(response => {
+  	  	  // 404 예외 처리
+  	  	  if(response.status === 404) {
+  	  	    alert("존재하지 않는 bid");
+  	  	    return;
+  	  	  }
+  	  	  // 404 이외 예외 처리
+  	  	  if(!response.ok) {  // status가 200이면 true
+  	  	    throw new Error(`HTTP error.status: \${response.status}`);
+  	  	  }
+  	  	  return response.json();
+  	  	})
+  	  	.then(jsonData => console.log(jsonData))  // 정상 처리
+  	  	.catch(error => console.log(`fetch() error: ${error}`));
+  	}
   </script>
   
   <hr>
   
-  <button onclick="getXml()">getXML</button>
+  <button onclick="getXml2()">getXML</button>
   <br>
   <div id="get-xml"></div>
   
@@ -44,6 +74,16 @@
   	  	  console.log(xmlDoc.querySelectorAll("item"));
   	  	  document.getElementById("get-xml").textContent = xmlDoc.querySelector("item").textContent;
   	  	})
+  	}
+  	function getXml2() {
+  	  getBoardsXml();
+  	}
+  	async function getBoardsXml() {
+  	  const response = await fetch("${contextPath}/b/list");
+  	  const textData = await response.text();
+  	  const parser = new DOMParser();
+  	  const xmlDoc = parser.parseFromString(textData, "application/xml");
+	  console.log(xmlDoc);  	  
   	}
   </script>
 </body>
