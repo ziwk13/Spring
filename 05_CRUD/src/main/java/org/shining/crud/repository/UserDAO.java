@@ -16,4 +16,9 @@ public class UserDAO {
   public UserDTO getUser(UserDTO user) {
     return template.selectOne("mybatis.mapper.userMapper.getUser", user);
   }
+  
+  // 조회
+  public UserDTO getUserByNickname(String nickname) {
+    return template.selectOne("mybatis.mapper.userMapper.getUserByNickname", nickname);
+  }
 }

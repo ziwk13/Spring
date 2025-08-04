@@ -17,5 +17,13 @@
    </beans:bean>
    
    <context:component-scan base-package="org.shining.crud" />
-   
+
+  <!-- Interceptor 등록하기 -->   
+  <interceptors>
+    <interceptor>
+      <mapping path="/board/write"/>
+      <mapping path="/board/modify"/>
+      <beans:bean class="org.shining.crud.interceptor.LogCheckInterceprtor"/>
+    </interceptor>
+  </interceptors>
 </beans:beans>

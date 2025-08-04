@@ -23,12 +23,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 <!-- 조회 (목록) -->
-<select id="getBoards" parameterType="String" resultMap="boardResultMap">
+<select id="getBoards" resultMap="boardResultMap">
 	SELECT b.bid, u.uid, u.email, u.nickname, b.title, b.content, b.created_at, b.modified_at
 	  FROM tbl_user u INNER JOIN tbl_board b
 	    ON u.uid = b.uid
 	    ORDER BY bid DESC
 	  LIMIT 0, 10
+</select>
+<!-- 조회 (개수) -->
+<select id="getBoardCount" resultType="java.lang.Integer">
+  SELECT COUNT(*)
+    FROM tbl_board
 </select>
 <!-- 조회 (단일) -->
 <select id="getBoardById" parameterType="java.lang.Integer" resultMap="boardResultMap">  <!-- 파라미터 타입은 생략 가능(#을 사용) -->

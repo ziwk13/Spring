@@ -15,5 +15,9 @@ public class UserServiceImpl implements UserService {
   public UserDTO findUserByIdEmailAndPassword(UserDTO user) {
     return userDAO.getUser(user);
   }
+  @Override
+  public UserDTO findUserByNickname(String nickname) {
+    return userDAO.getUserByNickname(nickname);
+  }
 
 }

@@ -9,13 +9,17 @@ import org.springframework.stereotype.Repository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Repository
+@Repository  // DAO 레벨에서 사용하는 @Component (Spring Container에 BoardDAO 타입의 빈 생성)
 public class BoardDAO {
 
   private final SqlSessionTemplate template;
   
   public List<BoardDTO> getBoards() {
     return template.selectList("mybatis.mapper.boardMapper.getBoards");
+  }
+  
+  public Integer getBoardCount() {
+    return template.selectOne("mybatis.mapper.boardMapper.getBoardCount");
   }
   
   public BoardDTO getBoardById(Integer bid) {
@@ -27,10 +31,10 @@ public class BoardDAO {
   }
   
   public int updateBoard(BoardDTO board) {
-    return template.update("mybatis.mapper.boardMapper.updataBoard", board);
+    return template.update("mybatis.mapper.boardMapper.updateBoard", board);
   }
   
-  public int deletedBoardById(Integer bid) {
-    return template.delete("mybatis.mapper.boardMapper.deletedBoardById", bid);
+  public int deleteBoardById(Integer bid) {
+    return template.delete("mybatis.mapper.boardMapper.deleteBoardById", bid);
   }
 }

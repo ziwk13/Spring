@@ -8,6 +8,7 @@ import org.shining.crud.model.dto.BoardDTO;
 
 public interface BoardService {
   List<BoardDTO> findAllBoards();
+  Integer getBoardCount();
   BoardDTO findBoardById(Integer bid);  // 상세보기
   boolean addBoard(BoardDTO board);  // 추가
   boolean modifyBoard(BoardDTO board);
