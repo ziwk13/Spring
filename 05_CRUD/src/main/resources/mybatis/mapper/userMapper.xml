@@ -12,15 +12,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- 조회 (회원 정보) -->
-	<select id="getUser" parameterType="UserDTO" resultType="UserDTO">
-	SELECT uid, email, password, nickname
+	<select id="getUserByEmailAndPassword" parameterType="UserDTO" resultType="UserDTO">
+	SELECT uid, email, password, salt, nickname
 	  FROM tbl_user
 	 WHERE email = #{email} AND password = #{password}
 	</select>
 
     <select id="getUserByNickname" parameterType="String" resultType="UserDTO">
-    SELECT uid, email, password, nickname
+    SELECT uid, email, password, salt, nickname
        FROM tbl_user
      WHERE nickname = #{nickname}
+    </select>
+    
+    <!-- 등록(회원 가입) -->
+    <insert id="insertUser" parameterType="UserDTO">
+      INSERT INTO tbl_user (email, password, salt, nickname)
+      VALUES (#{email}, #{password}, #{salt}, #{nickname})
+    </insert>
+    
+    <select id="getUserByEmail" parameterType="String" resultType="UserDTO">
+     SELECT uid, email, password, salt, nickname
+        FROM tbl_user
+      WHERE email = #{email}
     </select>
 </mapper>

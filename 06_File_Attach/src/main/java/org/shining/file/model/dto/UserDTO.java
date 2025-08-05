@@ -1,4 +1,4 @@
-package org.shining.crud.model.dto;
+package org.shining.file.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,8 +17,7 @@ public class UserDTO {
 
   private Integer uid;
   private String email;
-  private String password;
-  private byte[] salt;
-  private String nickname;
-
+  private String filePath;
+  private String originalFilename;
+  private String filesystemName;
 }

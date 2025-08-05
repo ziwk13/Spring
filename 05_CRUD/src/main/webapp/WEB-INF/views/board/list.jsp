@@ -7,10 +7,7 @@
   <jsp:param value="Board 게시판0" name="title"/>
 </jsp:include>
 <style>
-  table {
-  border: 1px solid black;
-  text-align: center;
-  }
+
 </style>
 
   <h1 style="text-align: center">목록</h1>

@@ -30,7 +30,7 @@
     <input type="hidden" name="url" value="${url}"> 
     <label>이메일: <input type="text" name="email" placeholder="이메일을 입력하세요"></label> 
     <br>
-    <label>비밀번호: <input type="text" name="password" placeholder="비밀번호를 입력하세요"></label>
+    <label>비밀번호: <input type="password" name="password" placeholder="비밀번호를 입력하세요"></label>
     <br>
     <button type="submit">로그인</button>
     <button type="button" onclick="onSignup()">회원가입</button>
