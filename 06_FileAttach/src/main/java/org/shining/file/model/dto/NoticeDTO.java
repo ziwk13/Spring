@@ -14,10 +14,8 @@ import lombok.ToString;
 @Builder
 @ToString
 public class NoticeDTO {
-
-  private Integer aid;
   private Integer nid;
-  private String filePath;
-  private String originalFilename;
-  private String filesystemName;
+  private String title;
+  private String content;
+  private Integer attachCount;
 }
